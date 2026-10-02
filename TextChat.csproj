@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>GWYF.TextChat</AssemblyName>
+    <Version>1.1.4</Version>
+    <LangVersion>latest</LangVersion>
+    <GameDir Condition="'$(GameDir)' == ''">$(MSBuildProjectDirectory)\..</GameDir>
+    <ManagedDir>$(GameDir)\Gamble With Your Friends_Data\Managed</ManagedDir>
+    <BepInExDir Condition="'$(BepInExDir)' == ''">$(GameDir)\BepInEx\core</BepInExDir>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src\*.cs" />
+    <Reference Include="BepInEx"><HintPath>$(BepInExDir)\BepInEx.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(BepInExDir)\0Harmony.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="$(ManagedDir)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\Mirror.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\com.rlabrecque.steamworks.net.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\Unity.InputSystem.dll" Private="false" />
+    <Reference Include="$(ManagedDir)\UnityEngine*.dll" Private="false" />
+  </ItemGroup>
+</Project>
+
+
+
+
