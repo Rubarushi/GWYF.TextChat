@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.5
+
+- Translate remaining chat hints and input errors to English; retain Korean IME input.
+
 ## 1.1.4
 
 - One Enter commits and sends Korean text after IME events settle; preserve the last syllable.
@@ -41,6 +45,7 @@
 - Steam display names, Unicode text and Korean font support.
 - IME composition guard, bounded history and send cooldown.
 - BepInEx 5 plugin and Thunderstore package.
+
 
 
 

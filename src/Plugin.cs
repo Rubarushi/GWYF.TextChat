@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 namespace GWYF.TextChat
 {
-    [BepInPlugin(Id, "Text Chat", "1.1.4")]
+    [BepInPlugin(Id, "Text Chat", "1.1.5")]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string Id = "gwyf.textchat";
@@ -51,7 +51,7 @@ namespace GWYF.TextChat
             harmony = new Harmony(Id);
             harmony.PatchAll();
             SceneManager.activeSceneChanged += SceneChanged;
-            Logger.LogInfo("Text Chat 1.1.4 loaded (Mirror). Enter: chat, Enter: send, Escape: cancel.");
+            Logger.LogInfo("Text Chat 1.1.5 loaded (Mirror). Enter: chat, Enter: send, Escape: cancel.");
         }
 
         private void Update()
@@ -65,7 +65,6 @@ namespace GWYF.TextChat
                 Logger.LogInfo(playing ? "Gameplay chat enabled." : "Gameplay chat disabled.");
                 lines.Clear();
                 if (history != null) history.text = "";
-                if (playing) AddLine("Enter 키를 눌러 채팅하세요");
             }
             if (!playing)
             {
@@ -113,7 +112,7 @@ namespace GWYF.TextChat
             InputEvents.ActiveLayer = InputLayer.UI;
             open = true;
             inputObject.SetActive(true);
-            hint.text = "ENTER  전송       ESC  취소";
+            hint.text = "ENTER  Send       ESC  Cancel";
             field.text = "";
             field.ResetSubmission();
             ime.ResetComposition();
@@ -146,7 +145,7 @@ namespace GWYF.TextChat
             Cursor.visible = oldCursorVisible;
             inputObject.SetActive(false);
             Logger.LogInfo("Chat input closed.");
-            hint.text = "ENTER  채팅";
+            hint.text = "ENTER  Chat";
         }
 
         private static void ResetGameplayInput()
@@ -162,12 +161,12 @@ namespace GWYF.TextChat
         {
             string text = ChatProtocol.Clean(field.text);
             if (text.Length == 0) { Close(); return; }
-            if (Time.unscaledTime - lastSend < 0.8f) { hint.text = "잠시 기다려 주세요"; return; }
+            if (Time.unscaledTime - lastSend < 0.8f) { hint.text = "Please wait a moment"; return; }
             try
             {
-                if (!Chat.Send(text)) { hint.text = "방장도 Text Chat 1.1 이상이 필요합니다"; return; }
+                if (!Chat.Send(text)) { hint.text = "The host needs Text Chat 1.1 or newer"; return; }
             }
-            catch (System.Text.EncoderFallbackException) { hint.text = "입력을 확인해 주세요"; return; }
+            catch (System.Text.EncoderFallbackException) { hint.text = "Please check your input"; return; }
             lastSend = Time.unscaledTime;
             Logger.LogInfo("Chat message queued via Mirror (" + text.Length + " characters).");
             // Display only the host's broadcast, including on the sending client.
@@ -247,7 +246,7 @@ namespace GWYF.TextChat
             // Truncate instead retained the oldest lines and hid newly received messages.
             history.overflowMode = TextOverflowModes.Overflow;
             hint = Text("Hint", panel.transform, new Vector2(18, 12), new Vector2(504, 22), 14);
-            hint.color = GameChatTheme.Paper; hint.text = "ENTER  채팅";
+            hint.color = GameChatTheme.Paper; hint.text = "ENTER  Chat";
             inputObject = Rect("Input", panel.transform);
             var ir = inputObject.GetComponent<RectTransform>();
             ir.anchorMin = ir.anchorMax = ir.pivot = Vector2.zero;
@@ -343,6 +342,7 @@ namespace GWYF.TextChat
         private static bool Prefix() => !Plugin.IsTyping;
     }
 }
+
 
 
 

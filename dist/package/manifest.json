@@ -1,0 +1,7 @@
+{
+  "name": "TextChat",
+  "version_number": "1.1.5",
+  "website_url": "",
+  "description": "In-game text chat over Mirror. Enter to type and send. Korean IME support. Hidden on the main menu. Host and chat users need this mod.",
+  "dependencies": ["BepInEx-BepInExPack-5.4.2305"]
+}

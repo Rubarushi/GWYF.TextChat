@@ -55,7 +55,7 @@ If BepInEx is elsewhere:
 ./build.ps1 -BepInExDir 'C:\path\to\BepInEx\core'
 ```
 
-`dist/TextChat-1.1.4.zip` is the Thunderstore upload package. It includes the DLL, manifest, README, changelog and 256×256 icon; it excludes game DLLs, build tools and BepInEx itself. Set `website_url` in `manifest.json` once you have a project page. Choose your own Thunderstore team when uploading.
+`dist/TextChat-1.1.5.zip` is the Thunderstore upload package. It includes the DLL, manifest, README, changelog and 256×256 icon; it excludes game DLLs, build tools and BepInEx itself. Set `website_url` in `manifest.json` once you have a project page. Choose your own Thunderstore team when uploading.
 
 Before publishing, validate two distinct Steam accounts in one lobby: host-to-client and client-to-host messages, Korean IME, Enter/Escape, gameplay input blocking, scene changes, leaving/rejoining, and mixed modded/unmodded players. See `VALIDATION.md` for the checks actually performed on this build.
 
@@ -63,6 +63,7 @@ Before publishing, validate two distinct Steam accounts in one lobby: host-to-cl
 
 - [Mirror network messages](https://mirror-networking.gitbook.io/docs/manual/guides/communications/network-messages)
 - [Thunderstore package requirements](https://wiki.thunderstore.io/mods/creating-a-package)
+
 
 
 
